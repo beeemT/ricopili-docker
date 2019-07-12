@@ -1,0 +1,11 @@
+version: '3'
+services:
+
+  ricopili:
+    image: ricopili
+    volumes:
+      - ~/docker/ricopili/:/run/
+    container_name: ricopili
+    env_file:
+      - ./ricopili.env
+    command: tail -F anything
