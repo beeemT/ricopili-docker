@@ -20,7 +20,7 @@ RUN curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.
     rm -f /tmp/Miniconda2-latest-Linux-x86_64.sh
 
 
-RUN mkdir -p  /ricopili/{rp_bin,rp_dep,rp_ref}
+RUN mkdir -p  /ricopili/{rp_bin,rp_dep,rp_ref,rp_log}
 
 #####################
 #Ricopili-References#
@@ -86,7 +86,7 @@ RUN mv /ricopili/rp_dep/bcftools/resources/human_g1k_v37.fasta.fai /ricopili/rp_
 ######################
 #Log Creation (loloc)#
 ######################
-RUN mkdir /run/log && \
+RUN cd /ricopili/rp_log && \
     touch test_info && \
     touch preimp_dir_info && \
     touch pcaer_info && \
