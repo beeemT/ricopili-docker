@@ -74,7 +74,7 @@ RUN curl -o /ricopili/ricopili.conf https://gist.githubusercontent.com/beeemT/1a
 ##################
 #Static Variables#
 ##################
-ENV PATH /ricopili/rp_bin:/ricopili/rp_bin/pdfjam:$PATH
+ENV PATH /ricopili/rp_dep/plink:/ricopili/rp_bin:/ricopili/rp_bin/pdfjam:$PATH
 ENV rp_perlpackages /ricopili/rp_dep/perl_modules/
 ENV RPHOME /ricopili
 
