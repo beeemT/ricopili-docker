@@ -82,3 +82,12 @@ ENV RPHOME /ricopili
 #Apply custom fixes#
 ####################
 RUN mv /ricopili/rp_dep/bcftools/resources/human_g1k_v37.fasta.fai /ricopili/rp_dep/bcftools/resources/human_g1k_v37.fasta
+
+######################
+#Log Creation (loloc)#
+######################
+RUN mkdir /run/log && \
+    touch test_info && \
+    touch preimp_dir_info && \
+    touch pcaer_info && \
+    touch impute_dir_info
