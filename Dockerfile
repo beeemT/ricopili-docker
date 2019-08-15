@@ -87,7 +87,14 @@ RUN mv /ricopili/rp_dep/bcftools/resources/human_g1k_v37.fasta.fai /ricopili/rp_
 #Log Creation (loloc)#
 ######################
 RUN cd /ricopili/rp_log && \
-    touch test_info && \
-    touch preimp_dir_info && \
-    touch pcaer_info && \
-    touch impute_dir_info
+    touch /ricopili/rp_log/preimp_dir_info \
+    /ricopili/rp_log/impute_dir_info \
+    /ricopili/rp_log/pcaer_info \
+    /ricopili/rp_log/idtager_info \
+    /ricopili/rp_log/repqc2_info \
+    /ricopili/rp_log/areator_info \
+    /ricopili/rp_log/merge_caller_info \
+    /ricopili/rp_log/postimp_navi_info \
+    /ricopili/rp_log/reference_dir_info \
+    /ricopili/rp_log/test_info \
+    /ricopili/rp_log/clumper_info
