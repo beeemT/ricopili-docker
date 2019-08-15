@@ -4,7 +4,7 @@ LABEL authors="Benedikt Thoma"\
       description="This is a docker image of ricopili. It should be used in conjunction with docker-compose or a similar architecture."
 
 RUN yum install -y epel-release && \
-    yum install -y libgomp perl bzip2 R mailx python2-pip python-devel perl-IO-Zlib less vim wget git htop && \
+    yum install -y libgomp perl bzip2 R mailx python2-pip python-devel perl-IO-Zlib less vim wget git htop pigz && \
     yum clean packages
 
 
