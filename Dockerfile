@@ -66,11 +66,6 @@ RUN cd /tmp && \
 #    rm -rf /ricopili/ricopili-0.0.1 && \
 #    chmod 755 /ricopili/rp_bin/
 
-########
-#Config#
-########
-RUN curl -o /ricopili/ricopili.conf https://gist.githubusercontent.com/beeemT/1a87105b3527b7187ce48344f9e473c6/raw/34e20d7b50837dc7b446709c974fbcf2dbb54ead/ricopili.conf
-
 ##################
 #Static Variables#
 ##################
@@ -98,3 +93,8 @@ RUN cd /ricopili/rp_log && \
     /ricopili/rp_log/reference_dir_info \
     /ricopili/rp_log/test_info \
     /ricopili/rp_log/clumper_info
+
+########
+#Config#
+########
+RUN curl -o /ricopili/ricopili.conf https://gist.githubusercontent.com/beeemT/1a87105b3527b7187ce48344f9e473c6/raw/34e20d7b50837dc7b446709c974fbcf2dbb54ead/ricopili.conf
