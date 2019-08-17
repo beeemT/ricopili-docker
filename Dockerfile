@@ -42,7 +42,6 @@ RUN curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.
 #######################
 RUN curl --progress-bar -Lo /tmp/deps.tgz  https://personal.broadinstitute.org/sripke/share_links/JeklRDhPD6FKm8Gnda7JsUOsMan2P2_Ricopili_Dependencies.1118b.tar.gz/Ricopili_Dependencies.1118b.tar.gz && \
     tar zxvf /tmp/deps.tgz -C /ricopili/deps/ && \
-    chmod 755 /ricopili/deps/ && \
     chmod 755 -R /ricopili/deps/ && \
     cd /ricopili/deps/ldsc/ && \
     conda env create --file environment.yml && \
