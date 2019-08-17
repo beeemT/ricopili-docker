@@ -25,17 +25,17 @@ RUN mkdir -p  /ricopili/{rp_bin,rp_dep,rp_ref,rp_log}
 #####################
 #Ricopili-References#
 #####################
-RUN cd /ricopili/rp_ref && \
-    wget -nv https://personal.broadinstitute.org/sripke/share_links/ggAhKGdW4XNc0XFn4ZA19Cl3PpcWIs_1000GP_Phase3_sr_0517d_pop_EAS_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EAS.bed && \
-    wget -nv https://personal.broadinstitute.org/sripke/share_links/ggAhKGdW4XNc0XFn4ZA19Cl3PpcWIs_1000GP_Phase3_sr_0517d_pop_EAS_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EAS.bim && \
-    wget -nv https://personal.broadinstitute.org/sripke/share_links/ggAhKGdW4XNc0XFn4ZA19Cl3PpcWIs_1000GP_Phase3_sr_0517d_pop_EAS_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EAS.fam && \
-    wget -nv https://personal.broadinstitute.org/sripke/share_links/ouOIbn17POnccuiiFkZRIgasfPLpqL_1000GP_Phase3_sr_0517d_pop_EUR_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EUR.bed && \
-    wget -nv https://personal.broadinstitute.org/sripke/share_links/ouOIbn17POnccuiiFkZRIgasfPLpqL_1000GP_Phase3_sr_0517d_pop_EUR_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EUR.bim && \
-    wget -nv https://personal.broadinstitute.org/sripke/share_links/ouOIbn17POnccuiiFkZRIgasfPLpqL_1000GP_Phase3_sr_0517d_pop_EUR_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EUR.fam
-
-RUN curl --progress-bar -Lo /tmp/rp_ref.tar.gz https://storage.googleapis.com/cloud-ricopili/reference-genotypes/1KG_ref_ricopili.tar.gz && \
-    tar zxvf /tmp/rp_ref.tar.gz -C /ricopili/rp_ref/ && \
-    rm -f /tmp/rp_ref.tar.gz
+#RUN cd /ricopili/rp_ref && \
+#    wget -nv https://personal.broadinstitute.org/sripke/share_links/ggAhKGdW4XNc0XFn4ZA19Cl3PpcWIs_1000GP_Phase3_sr_0517d_pop_EAS_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EAS.bed && \
+#    wget -nv https://personal.broadinstitute.org/sripke/share_links/ggAhKGdW4XNc0XFn4ZA19Cl3PpcWIs_1000GP_Phase3_sr_0517d_pop_EAS_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EAS.bim && \
+#    wget -nv https://personal.broadinstitute.org/sripke/share_links/ggAhKGdW4XNc0XFn4ZA19Cl3PpcWIs_1000GP_Phase3_sr_0517d_pop_EAS_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EAS.fam && \
+#    wget -nv https://personal.broadinstitute.org/sripke/share_links/ouOIbn17POnccuiiFkZRIgasfPLpqL_1000GP_Phase3_sr_0517d_pop_EUR_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EUR.bed && \
+#    wget -nv https://personal.broadinstitute.org/sripke/share_links/ouOIbn17POnccuiiFkZRIgasfPLpqL_1000GP_Phase3_sr_0517d_pop_EUR_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EUR.bim && \
+#    wget -nv https://personal.broadinstitute.org/sripke/share_links/ouOIbn17POnccuiiFkZRIgasfPLpqL_1000GP_Phase3_sr_0517d_pop_EUR_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EUR.fam
+#
+#RUN curl --progress-bar -Lo /tmp/rp_ref.tar.gz https://storage.googleapis.com/cloud-ricopili/reference-genotypes/1KG_ref_ricopili.tar.gz && \
+#    tar zxvf /tmp/rp_ref.tar.gz -C /ricopili/rp_ref/ && \
+#    rm -f /tmp/rp_ref.tar.gz
 
 #######################
 #Ricopili-Dependencies#
