@@ -3,6 +3,8 @@ FROM centos
 LABEL authors="Benedikt Thoma"\
       description="This is a docker image of ricopili. It should be used in conjunction with docker-compose or a similar architecture."
 
+RUN mkdir -p  /ricopili/{bin,deps,refs,log}
+
 RUN yum install -y epel-release && \
     yum install -y libgomp perl bzip2 R mailx python2-pip python-devel perl-IO-Zlib less vim wget git htop pigz && \
     yum clean packages
@@ -19,8 +21,6 @@ RUN curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.
     sh /tmp/Miniconda2-latest-Linux-x86_64.sh -b -f -p /usr/local/ && \
     rm -f /tmp/Miniconda2-latest-Linux-x86_64.sh
 
-
-RUN mkdir -p  /ricopili/{bin,deps,refs,log}
 
 #####################
 #Ricopili-References#
