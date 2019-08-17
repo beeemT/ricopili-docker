@@ -15,10 +15,6 @@ RUN yum install -y epel-release && \
 RUN Rscript -e 'install.packages("rmeta", repos = "http://cran.us.r-project.org")'
 
 
-#RUN pip install --upgrade pip --no-cache-dir
-#RUN pip install --no-cache-dir --no-deps bitarray==0.8 nose numpy pandas==0.21 scipy pybedtools==0.7 pysam==0.15
-
-
 #####################
 #Ricopili-References#
 #####################
@@ -42,13 +38,13 @@ RUN curl --progress-bar -Lo /tmp/deps.tgz  https://personal.broadinstitute.org/s
     chmod 755 -R /ricopili/deps/ && \
     rm -f /tmp/deps.tgz
 
-USER ricopili
-RUN curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh && \
-    sh /tmp/Miniconda2-latest-Linux-x86_64.sh -b -f -p /usr/local/ && \
+RUN mkdir /root/.conda/ &&\
+    curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh && \
+    /bin/bash /tmp/Miniconda2-latest-Linux-x86_64.sh -b -f -p /usr/local/ && \
     rm -f /tmp/Miniconda2-latest-Linux-x86_64.sh && \
     cd /ricopili/deps/ldsc/ && \
-    conda env create --file environment.yml
-USER root
+    curl --progress-bar -Lo env.yml https://raw.githubusercontent.com/beeemT/ricopili-docker/master/env.yml &&\
+    conda env create --file env.yml
 
 ###################
 #Ricopili-Binaries#
