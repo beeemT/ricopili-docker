@@ -14,7 +14,7 @@ RUN Rscript -e 'install.packages("rmeta", repos = "http://cran.us.r-project.org"
 
 
 RUN pip install --upgrade pip --no-cache-dir
-RUN pip install --no-cache-dir --no-deps bitarray==0.8 pandas==0.21 pybedtools==0.7 pysam==0.15
+RUN pip install --no-cache-dir --no-deps bitarray==0.8 pandas==0.21 scipy pybedtools==0.7 pysam==0.15
 
 
 RUN curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh && \
