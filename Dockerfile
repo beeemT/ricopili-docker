@@ -13,13 +13,8 @@ RUN yum install -y epel-release && \
 RUN Rscript -e 'install.packages("rmeta", repos = "http://cran.us.r-project.org")'
 
 
-RUN pip install --upgrade pip --no-cache-dir
-RUN pip install --no-cache-dir --no-deps bitarray==0.8 pandas==0.21 scipy pybedtools==0.7 pysam==0.15
-
-
-RUN curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh && \
-    sh /tmp/Miniconda2-latest-Linux-x86_64.sh -b -f -p /usr/local/ && \
-    rm -f /tmp/Miniconda2-latest-Linux-x86_64.sh
+#RUN pip install --upgrade pip --no-cache-dir
+#RUN pip install --no-cache-dir --no-deps bitarray==0.8 nose numpy pandas==0.21 scipy pybedtools==0.7 pysam==0.15
 
 
 #####################
@@ -43,9 +38,14 @@ RUN curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.
 RUN curl --progress-bar -Lo /tmp/deps.tgz  https://personal.broadinstitute.org/sripke/share_links/JeklRDhPD6FKm8Gnda7JsUOsMan2P2_Ricopili_Dependencies.1118b.tar.gz/Ricopili_Dependencies.1118b.tar.gz && \
     tar zxvf /tmp/deps.tgz -C /ricopili/deps/ && \
     chmod 755 -R /ricopili/deps/ && \
-    cd /ricopili/deps/ldsc/ && \
-    conda env create --file environment.yml && \
     rm -f /tmp/deps.tgz
+
+
+RUN curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh && \
+    sh /tmp/Miniconda2-latest-Linux-x86_64.sh -b -f -p /usr/local/ && \
+    rm -f /tmp/Miniconda2-latest-Linux-x86_64.sh && \
+    cd /ricopili/deps/ldsc/ && \
+    conda env create --file environment.yml
 
 ###################
 #Ricopili-Binaries#
