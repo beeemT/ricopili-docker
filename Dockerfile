@@ -3,7 +3,9 @@ FROM centos
 LABEL authors="Benedikt Thoma"\
       description="This is a docker image of ricopili. It should be used in conjunction with docker-compose or a similar architecture."
 
-RUN mkdir -p  /ricopili/{bin,deps,refs,log}
+RUN useradd -d /ricopili -U -m -s /bin/bash ricopili
+
+RUN mkdir /ricopili/{bin,deps,refs,log,.conda}
 
 RUN yum install -y epel-release && \
     yum install -y libgomp perl bzip2 R mailx python2-pip python-devel perl-IO-Zlib less vim wget git htop pigz && \
@@ -40,12 +42,13 @@ RUN curl --progress-bar -Lo /tmp/deps.tgz  https://personal.broadinstitute.org/s
     chmod 755 -R /ricopili/deps/ && \
     rm -f /tmp/deps.tgz
 
-
+USER ricopili
 RUN curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh && \
     sh /tmp/Miniconda2-latest-Linux-x86_64.sh -b -f -p /usr/local/ && \
     rm -f /tmp/Miniconda2-latest-Linux-x86_64.sh && \
     cd /ricopili/deps/ldsc/ && \
     conda env create --file environment.yml
+USER root
 
 ###################
 #Ricopili-Binaries#
