@@ -53,7 +53,7 @@ RUN mkdir /root/.conda/ &&\
 #Newest
 RUN cd /tmp && \
     git clone https://github.com/beeemT/ricopili.git && \
-    mv ./ricopili/bin/* /ricopili/bin/ && \
+    mv ./ricopili/rp_bin/* /ricopili/bin/ && \
     chmod 755 /ricopili/bin/ && \
     rm -rf /tmp/ricopili
 
@@ -95,4 +95,4 @@ RUN cd /ricopili/log && \
 ########
 #Config#
 ########
-RUN curl -o /ricopili/ricopili.conf https://gist.githubusercontent.com/beeemT/1a87105b3527b7187ce48344f9e473c6/raw/34e20d7b50837dc7b446709c974fbcf2dbb54ead/ricopili.conf
+RUN curl --progress-bar -Lo /ricopili/ricopili.conf https://raw.githubusercontent.com/beeemT/ricopili-docker/master/ricopili.conf
