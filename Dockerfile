@@ -5,7 +5,7 @@ LABEL authors="Benedikt Thoma"\
 
 RUN useradd -d /ricopili -U -m -s /bin/bash ricopili
 
-RUN mkdir /ricopili/{bin,deps,refs,log,.conda}
+RUN mkdir /ricopili/{bin,deps,refs,log}
 
 RUN yum install -y epel-release && \
     yum install -y libgomp perl bzip2 R mailx python2-pip python-devel perl-IO-Zlib less vim wget git htop pigz && \
