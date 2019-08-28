@@ -38,6 +38,10 @@ RUN curl --progress-bar -Lo /tmp/deps.tgz  https://personal.broadinstitute.org/s
     chmod 755 -R /ricopili/deps/ && \
     rm -f /tmp/deps.tgz
 
+RUN cd /ricopili/deps/bcftools/resources && \
+    curl --progress-bar -Lo human_g1k_v37.fasta.gz http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/human_g1k_v37.fasta.gz && \
+    pigz -d ./human_g1k_v37.fasta.gz
+
 RUN mkdir /root/.conda/ &&\
     curl --progress-bar -Lo /tmp/Miniconda2-latest-Linux-x86_64.sh https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh && \
     /bin/bash /tmp/Miniconda2-latest-Linux-x86_64.sh -b -f -p /usr/local/ && \
@@ -70,11 +74,6 @@ RUN cd /tmp && \
 ENV PATH /ricopili/deps/plink:/ricopili/bin:/ricopili/bin/pdfjam:$PATH
 ENV rp_perlpackages /ricopili/deps/perl_modules/
 ENV RPHOME /ricopili
-
-####################
-#Apply custom fixes#
-####################
-RUN mv /ricopili/deps/bcftools/resources/human_g1k_v37.fasta.fai /ricopili/deps/bcftools/resources/human_g1k_v37.fasta
 
 ######################
 #Log Creation (loloc)#
