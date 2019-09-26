@@ -12,7 +12,8 @@ RUN yum install -y epel-release && \
     yum clean packages
 
 
-RUN Rscript -e 'install.packages("rmeta", repos = "http://cran.us.r-project.org")'
+RUN Rscript -e 'install.packages("rmeta", repos = "http://cran.us.r-project.org", dependencies = TRUE)'
+RUN Rscript -e 'install.packages("rms", repos = "http://cran.us.r-project.org", dependencies = TRUE)'
 
 
 #####################
