@@ -11,7 +11,37 @@ RUN yum install -y epel-release && \
     yum install -y libgomp perl bzip2 R mailx python2-pip python-devel perl-IO-Zlib less vim wget git htop pigz && \
     yum clean packages
 
+##################
+#Static Variables#
+##################
+ENV PATH /ricopili/deps/plink:/ricopili/bin:/ricopili/bin/pdfjam:$PATH
+ENV rp_perlpackages /ricopili/deps/perl_modules/
+ENV RPHOME /ricopili
 
+######################
+#Log Creation (loloc)#
+######################
+RUN cd /ricopili/log && \
+    touch /ricopili/log/preimp_dir_info \
+    /ricopili/log/impute_dir_info \
+    /ricopili/log/pcaer_info \
+    /ricopili/log/idtager_info \
+    /ricopili/log/repqc2_info \
+    /ricopili/log/areator_info \
+    /ricopili/log/merge_caller_info \
+    /ricopili/log/postimp_navi_info \
+    /ricopili/log/reference_dir_info \
+    /ricopili/log/test_info \
+    /ricopili/log/clumper_info
+
+########
+#Config#
+########
+RUN curl --progress-bar -Lo /ricopili/ricopili.conf https://raw.githubusercontent.com/beeemT/ricopili-docker/master/ricopili.conf
+
+#############
+#R libraries#
+#############
 RUN Rscript -e 'install.packages("rmeta", repos = "http://cran.us.r-project.org", dependencies = TRUE)'
 RUN Rscript -e 'install.packages("rms", repos = "http://cran.us.r-project.org", dependencies = TRUE)'
 
@@ -68,31 +98,3 @@ RUN cd /tmp && \
 #    mv /ricopili/ricopili-0.0.1/bin/* /ricopili/bin/ && \
 #    rm -rf /ricopili/ricopili-0.0.1 && \
 #    chmod 755 /ricopili/bin/
-
-##################
-#Static Variables#
-##################
-ENV PATH /ricopili/deps/plink:/ricopili/bin:/ricopili/bin/pdfjam:$PATH
-ENV rp_perlpackages /ricopili/deps/perl_modules/
-ENV RPHOME /ricopili
-
-######################
-#Log Creation (loloc)#
-######################
-RUN cd /ricopili/log && \
-    touch /ricopili/log/preimp_dir_info \
-    /ricopili/log/impute_dir_info \
-    /ricopili/log/pcaer_info \
-    /ricopili/log/idtager_info \
-    /ricopili/log/repqc2_info \
-    /ricopili/log/areator_info \
-    /ricopili/log/merge_caller_info \
-    /ricopili/log/postimp_navi_info \
-    /ricopili/log/reference_dir_info \
-    /ricopili/log/test_info \
-    /ricopili/log/clumper_info
-
-########
-#Config#
-########
-RUN curl --progress-bar -Lo /ricopili/ricopili.conf https://raw.githubusercontent.com/beeemT/ricopili-docker/master/ricopili.conf
