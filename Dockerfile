@@ -44,6 +44,7 @@ RUN curl --progress-bar -Lo /ricopili/ricopili.conf https://raw.githubuserconten
 #############
 RUN Rscript -e 'install.packages("rmeta", repos = "http://cran.us.r-project.org", dependencies = TRUE)'
 RUN Rscript -e 'install.packages("rms", repos = "http://cran.us.r-project.org", dependencies = TRUE)'
+RUN Rscript -e 'install.packages("pROC", repos = "http://cran.us.r-project.org", dependencies = TRUE)'
 
 
 #####################
