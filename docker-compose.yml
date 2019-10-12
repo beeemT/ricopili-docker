@@ -4,7 +4,7 @@ services:
   ricopili:
     image: ricopili
     volumes:
-      - ~/docker/ricopili/:/run/
+      - /ricopili/volume/:/run/
     container_name: ricopili
     env_file:
       - ./ricopili.env
