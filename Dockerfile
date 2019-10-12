@@ -50,6 +50,12 @@ RUN Rscript -e 'install.packages("pROC", repos = "http://cran.us.r-project.org",
 #####################
 #Ricopili-References#
 #####################
+COPY ./refpanel.tar.gz /ricopili/refs/refpanel.tar.gz
+RUN cd /ricopili/refs/ && \
+    pigz -d ./refpanel.tar.gz && \
+    tar xvf ./refpanel.tar && \
+    rm -f ./refpanel.tar
+
 #RUN cd /ricopili/refs && \
 #    wget -nv https://personal.broadinstitute.org/sripke/share_links/ggAhKGdW4XNc0XFn4ZA19Cl3PpcWIs_1000GP_Phase3_sr_0517d_pop_EAS_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EAS.bed && \
 #    wget -nv https://personal.broadinstitute.org/sripke/share_links/ggAhKGdW4XNc0XFn4ZA19Cl3PpcWIs_1000GP_Phase3_sr_0517d_pop_EAS_chr23/ALL_v5a.20130502.chrX_1KG_0517.impute.plink.EAS.bim && \
